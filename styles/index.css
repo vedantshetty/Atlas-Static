@@ -1,0 +1,18 @@
+.tabs.tabs-transparent .indicator {
+  background-color: #ff6d00;
+}
+
+
+.card-title {
+  background-color: rgba(00, 00, 00, 0.3);
+  width: 100%;
+}
+
+
+.tabs-content.carousel.carousel-slider .carousel-item.active{
+  position: relative;
+}
+.tabs-content {
+  height: auto !important;
+  min-height: 100%;
+}
