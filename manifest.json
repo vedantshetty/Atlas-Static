@@ -13,7 +13,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/Atlas-Static",
+  "start_url": "/Atlas-Static/index.html",
   "background_color": "#01347A",
   "display": "standalone",
   "theme_color": "#01347A"
