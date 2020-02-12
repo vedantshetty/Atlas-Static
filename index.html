@@ -3,7 +3,7 @@
   <head>
     <title>Atlas: School News</title>
     <link rel='icon' href='assets/images/appicons/apple-touch-icon.png' type = 'image/x-icon'/>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">            
     <link rel='stylesheet' href= 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/fontawesome.min.css'>
     <link rel='stylesheet' href='styles/index.css' type="text/css" />
@@ -305,56 +305,16 @@
               </div>
     </div>
   <script>
-    if('serviceWorker' in navigator) {
 
-/** Define if <link rel='next|prev|prefetch'> should be preloaded when accessing this page */
-const PREFETCH = true;
-
-/** Define which link-rel's should be preloaded if enabled.*/
-const PREFETCH_LINK_RELS = ['index','next', 'prev', 'prefetch'];
-
-/**prefetchCache*/
-function prefetchCache() {
-    if(navigator.serviceWorker.controller) {
-
-        let links = document.querySelectorAll(
-            PREFETCH_LINK_RELS.map((rel) => {
-                return 'link[rel='+rel+']';
-            }).join(',')
-        );
-
-        if(links.length > 0) {
-            Array.from(links)
-                .map((link) => {
-                    let href = link.getAttribute('href');
-                    navigator.serviceWorker.controller.postMessage({
-                        action : 'cache',
-                        url : href,
-                    });
-                });
-        }
-
-
-    }
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('serviceworker.js')
+    .then(function(reg) {
+      console.log('[Companion]', 'Service worker registered!');
+      console.log(reg);
+    });
 }
 
-/**Register Service Worker*/
-navigator.serviceWorker
-    .register('/serviceworker.js', { scope: '/' })
-    .then(() => {
-        console.log('Service Worker Registered');
-    });
 
-/** Wait if ServiceWorker is ready */
-navigator.serviceWorker
-    .ready
-    .then(() => {
-        if(PREFETCH) {
-            prefetchCache();
-        }
-    });
-
-}
   </script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
