@@ -43,7 +43,7 @@ function onFetch(event) {
         if (event.request.mode === 'navigate' ||
           (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
           console.log('[Serviceworker]', "Fetching offline content", event);
-          return caches.match('/offline.html');
+          return caches.match('offline.html');
         }
       })
     })
